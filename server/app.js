@@ -7,7 +7,7 @@ const app = express()
 const monggose = require('mongoose')
 const cors = require('cors')
 // const router = require('./routes')
-// const errorHandler = require('./middlewares/errorHandler')
+const errorHandler = require('./middlewares/errorHandler')
 
 monggose.connect(process.env.MONGOURI_LOCAL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, function (err) {
   if (err) console.log('database is an error')
@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // app.use('/', router)
-// app.use(errorHandler)
+app.use(errorHandler)
 
 module.exports = app
 
