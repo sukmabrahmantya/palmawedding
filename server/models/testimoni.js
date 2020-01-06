@@ -3,7 +3,6 @@
 const { Schema, model } = require('mongoose')
 
 const testimoniSchema = new Schema({
-
 })
 
 const Testimoni = model('Testimoni', testimoniSchema)
