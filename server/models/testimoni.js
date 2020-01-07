@@ -19,7 +19,7 @@ const testimoniSchema = new Schema({
       required: [true, 'Testimony cannot be empty!']
     },
   }
-})
+}, { timestamps: {createdAt: 'createdAt', updatedAt: 'updatedAt'} })
 
 const Testimoni = model('Testimoni', testimoniSchema)
 
