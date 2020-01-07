@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const Content = require('../controllers/content')
+const Content = require('../controllers/photo')
 
 router.post('/', Content.addPhoto)
 router.delete('/:id', Content.deletePhoto)

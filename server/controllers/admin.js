@@ -1,7 +1,6 @@
 'use strict'
 const { Admin } = require('../models')
-// const { generateToken } = require('../helpers/jwt')
-const jwt = require('jsonwebtoken')
+const { generateToken } = require('../helpers/jwt')
 const bcrypt = require('bcryptjs')
 
 class adminController {
@@ -14,8 +13,7 @@ class adminController {
         if (user) {
           let valid = bcrypt.compareSync(password, user.password)
           if (valid) {
-            let token = jwt.sign( {id: user.id}, 'apapapap' )
-            // let token = generateToken({ id: user.id })
+            let token = generateToken({ id: user.id })
             res.status(200).json(token)
           } else {
             throw ({

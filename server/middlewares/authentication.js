@@ -7,9 +7,8 @@ module.exports = (req, res, next) => {
     let token = req.headers.token
     const payload = verifyToken(token)
     req.decoded = payload
-    console.log(req.decoded)
     next()
-  } catch (next) {
+  } catch (err) {
     next(err)
   }
 }
