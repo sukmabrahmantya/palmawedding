@@ -34,7 +34,7 @@ class adminController {
   static register(req, res, next) {
     const { name, email, password, username } = req.body
     Admin
-      .create({ name, email, password, username, status: 'Super Admin' })
+      .create({ name, email, password, username, status: 'Admin' })
       .then(user => {
         let token = generateToken({ id: user.id })
         res.status(201).json(token)

@@ -1,6 +1,6 @@
 'use strict'
 
-const { Schema, model } = require('mongoose')
+const { Schema, model, models } = require('mongoose')
 const bcrypt = require('bcryptjs')
 
 const adminSchema = new Schema({
@@ -17,7 +17,7 @@ const adminSchema = new Schema({
     required: [true, `Email cannot be empty!`],
     validate: [{
       validator: (value) => {
-        return models.User.findOne({ email: value })
+        return models.Admin.findOne({ email: value })
           .then(user => {
             if (user) return false
           })
@@ -39,7 +39,7 @@ const adminSchema = new Schema({
   }
 })
 
-userSchema.pre('save', function (next) {
+adminSchema.pre('save', function (next) {
   const salt = bcrypt.genSaltSync(11)
   this.password = bcrypt.hashSync(this.password, salt)
   next()
