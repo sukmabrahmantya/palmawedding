@@ -4,9 +4,9 @@ const { Photo, Testimoni, Pricelist } = require('../models')
 
 class contentController {
   static addPhoto(req, res, next) {
-    const { image } = req.body
+    const { image, clientName, date } = req.body
     Photo
-      .create({ image })
+      .create({ image, clientName, date: new Date(date) })
       .then(image => {
         res.status(201).json(image)
       })
