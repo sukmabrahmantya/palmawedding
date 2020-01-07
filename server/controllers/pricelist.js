@@ -36,7 +36,7 @@ class pricelistController {
 
   static topPricelist(req, res, next) {
     Pricelist
-      .find().sort('-createdAt').limit(1)
+      .findOne().sort('-createdAt').limit(1)
       .then(pricelist => {
         res.status(200).json(pricelist)
       })
