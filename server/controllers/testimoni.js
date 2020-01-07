@@ -4,9 +4,9 @@ const { Testimoni } = require('../models')
 
 class testimoniController {
   static addTestimoni(req, res, next) {
-    const { name, date, testimoni } = req.body
+    const { name, date, testimony } = req.body
     Testimoni
-      .create({ name, date: new Date(date), testimoni })
+      .create({ name, date: new Date(date), testimony })
       .then(testimoni => {
         res.status(201).json(testimoni)
       })

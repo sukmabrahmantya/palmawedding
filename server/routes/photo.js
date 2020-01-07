@@ -2,11 +2,11 @@
 
 const express = require('express')
 const router = express.Router()
-const Content = require('../controllers/photo')
+const Image = require('../controllers/photo')
 
-router.post('/', Content.addPhoto)
-router.delete('/:id', Content.deletePhoto)
-router.get('/', Content.findAllPhoto)
-router.get('/top', Content.topPhoto)
+router.post('/', Image.addPhoto)
+router.delete('/:id', Image.deletePhoto)
+router.get('/', Image.findAllPhoto)
+router.get('/top', Image.topPhoto)
 
 module.exports = router
