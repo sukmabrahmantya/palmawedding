@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Navbar />
-      <transition name="fade">
-        <router-view/>
-      </transition>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Navbar from './components/navbar'
 
 export default {
-  components: {
-    Navbar
+  created () {
+    const valid = localStorage.getItem('token')
+    if (valid) {
+      this.$store.commit('SET_LOGIN', true)
+      this.$store.dispatch('verify')
+    }
   }
 }
 </script>

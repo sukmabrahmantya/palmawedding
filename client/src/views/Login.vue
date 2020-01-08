@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navbar />
     <div class="d-flex container justify-content-center align-items-center login mt-5">
       <div class="d-flex flex-column bd-highlight mb-3 sub-login">
         <div class="p-2 bd-highlight mt-3">
@@ -7,7 +8,7 @@
             <b-card-text>
               <div class="d-flex bd-highlight">
                 <div class="p-2 bd-highlight register">
-                  <div>
+                  <div class="logo-palma">
                     <img src="../../public/image/palma.jpg" alt="loading..." class="palma-logo">
                   </div>
                 </div>
@@ -46,9 +47,13 @@
 </template>
 
 <script>
+import Navbar from '../components/navbar'
 import Swal from 'sweetalert2'
 
 export default {
+  components: {
+    Navbar
+  },
   data () {
     return {
       email: '',
@@ -73,7 +78,8 @@ export default {
           this.password = ''
           localStorage.setItem('token', data.token)
           this.$store.commit('SET_LOGIN', true)
-          this.$router.push('/')
+          this.$store.commit('SET_USERNAME', data.username)
+          this.$router.push('/dashboard')
         })
         .catch((err) => {
           Swal.fire({
@@ -115,6 +121,10 @@ img {
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.logo-palma {
+  text-align: center
 }
 
 .palma-logo {

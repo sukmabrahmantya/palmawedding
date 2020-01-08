@@ -7,6 +7,7 @@ const Auth = require('../middlewares/authentication')
 const Autho = require('../middlewares/authorization')
 
 router.post('/login', Admin.login)
+router.get('/verify', Admin.verivyToken)
 router.post('/register', Auth, Autho, Admin.register)
 
 module.exports = router

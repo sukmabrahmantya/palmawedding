@@ -1,10 +1,17 @@
 <template>
-  <div><h1>ini Services</h1></div>
+  <div>
+    <Navbar />
+    <h1>ini Services</h1>
+  </div>
 </template>
 
 <script>
-export default {
+import Navbar from '../components/navbar'
 
+export default {
+  components: {
+    Navbar
+  }
 }
 </script>
 
