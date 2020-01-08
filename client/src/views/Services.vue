@@ -1,5 +1,5 @@
 <template>
-  <div><h1>Ini Contact</h1></div>
+  <div><h1>ini Services</h1></div>
 </template>
 
 <script>
