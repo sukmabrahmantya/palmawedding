@@ -70,7 +70,7 @@ export default {
         .then(({ data }) => {
           Swal.fire({
             icon: 'success',
-            title: 'Login Successful, Welcome',
+            title: `Login Successful, Welcome ${data.username}`,
             showConfirmButton: false,
             timer: 1500
           })
@@ -78,7 +78,7 @@ export default {
           this.password = ''
           localStorage.setItem('token', data.token)
           this.$store.commit('SET_LOGIN', true)
-          this.$store.commit('SET_USERNAME', data.username)
+          this.$store.dispatch('verify')
           this.$router.push('/dashboard')
         })
         .catch((err) => {

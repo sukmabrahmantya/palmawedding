@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     login: false,
-    username: ''
+    username: '',
+    status: ''
   },
   mutations: {
     SET_LOGIN (state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     SET_USERNAME (state, payload) {
       state.username = payload
+    },
+    SET_STATUS (state, payload) {
+      state.status = payload
     }
   },
   actions: {
@@ -29,6 +33,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           commit('SET_USERNAME', data.username)
+          commit('SET_STATUS', data.status)
         })
         .catch(err => {
           console.log(err)

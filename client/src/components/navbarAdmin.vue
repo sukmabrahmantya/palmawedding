@@ -3,33 +3,23 @@
     <div class="p-2 flex-shrink-1 bd-highlight" id="navbar">
       <div
         class="d-flex align-content-between flex-wrap bd-highlight"
-        style="justify-content: center"
-      >
-        <a
-          :class="{ active: activePage == 'read-all-article-page' }"
-          @click="changePage('read-all-article-page')"
-          class="btn navbar-btn"
-          role="button"
-        >
+        style="justify-content: center">
+        <a class="btn navbar-btn" role="button">
           <i class="fas fa-home" id="icon"></i>
         </a>
-        <a
-          :class="{ active: activePage == 'create-article-page' }"
-          @click="changePage('create-article-page')"
-          class="btn navbar-btn"
-          role="button"
-        >
+        <a class="btn navbar-btn" role="button">
           <i class="fas fa-gem" id="icon"></i>
+        </a>
+        <a v-if="(this.status === 'Super Admin')" class="btn navbar-btn" role="button">
+          <i class="far fa-calendar-alt" id="icon"></i>
         </a>
         <a class="btn navbar-btn active disabled" role="button">
           <img src="https://img.icons8.com/color/48/000000/palm-tree.png" id="icon-mini">
         </a>
-        <a
-          :class="{ active: activePage == 'read-article-page' }"
-          @click="changePage('read-article-page')"
-          class="btn navbar-btn"
-          role="button"
-        >
+        <a v-if="(this.status === 'Super Admin')" class="btn navbar-btn" role="button">
+          <i class="fas fa-user-plus" id="icon"></i>
+        </a>
+        <a class="btn navbar-btn" role="button">
           <i class="far fa-images" id="icon"></i>
         </a>
         <a class="btn navbar-btn" @click="logout" role="button">
@@ -44,17 +34,7 @@
 import Swal from 'sweetalert2'
 
 export default {
-  props: ['activePage'],
-  data () {
-    return {
-      isActive: 'read-all-article-page'
-    }
-  },
   methods: {
-    changePage (isPage) {
-      this.isActive = isPage
-      this.$emit('page', isPage)
-    },
     logout () {
       Swal.fire({
         title: 'Are you sure to Logout?',
@@ -69,13 +49,20 @@ export default {
             title: 'Success!',
             text: 'See you soon.....',
             icon: 'success',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Oke'
           })
           localStorage.removeItem('token')
           this.$store.commit('SET_LOGIN', false)
+          this.$store.commit('SET_USERNAME', '')
+          this.$store.commit('SET_STATUS', '')
           this.$router.push('/')
         }
       })
+    }
+  },
+  computed: {
+    status () {
+      return this.$store.state.status
     }
   }
 }

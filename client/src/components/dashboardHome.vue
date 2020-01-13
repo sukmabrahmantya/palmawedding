@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home border">
     <h1>ini Dashboard Home</h1>
   </div>
 </template>
@@ -10,6 +10,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.home {
+  height: 92vh;
+  min-height: 92vh;
+  overflow: scroll;
+}
 </style>

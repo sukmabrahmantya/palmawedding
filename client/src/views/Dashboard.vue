@@ -2,8 +2,8 @@
   <div class="d-flex bd-highlight">
     <Navbar />
     <div class="p-2 flex-grow-1 bd-highlight border">
-      <div class="border username">
-        <h1>ad</h1>
+      <div class="username">
+        <h5>{{ this.username }}  <i class="fas fa-user-circle"></i></h5>
       </div>
       <router-view />
     </div>
