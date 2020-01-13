@@ -2,7 +2,7 @@
 
 const { Schema, model } = require('mongoose')
 
-const photoSchema = new Schema ({
+const portofolioSchema = new Schema ({
   title: {
     type: String,
     required: [true, 'Title cannot be empty!']
@@ -21,6 +21,6 @@ const photoSchema = new Schema ({
   }
 }, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }})
 
-const Photo = model('Photo', photoSchema)
+const Portofolio = model('Portofolio', portofolioSchema)
 
-module.exports = Photo
+module.exports = Portofolio
