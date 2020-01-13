@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home d-flex border">
     <Navbar />
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
   </div>
 </template>
 
@@ -18,3 +17,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.home {
+
+}
+</style>

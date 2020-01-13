@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex page">
     <Navbar />
     <div class="d-flex container justify-content-center align-items-center login mt-5">
       <div class="d-flex flex-column bd-highlight mb-3 sub-login">
@@ -102,9 +102,15 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 
+.page {
+  height: 100vh;
+  align-content: center;
+  justify-content: center
+}
+
 .login {
   /* height: 100vh; */
-  /* margin-top: 50px; */
+  /* margin-top: 120px !important; */
   width: 70%;
   font-family: 'Ubuntu', sans-serif;
 }
