@@ -1,6 +1,6 @@
 'use strict'
 
-const { Service, Testimoni, Testimoni } = require('../models')
+const { Service, Testimoni, Pricelist } = require('../models')
 
 class serviceController {
   static addPhoto(req, res, next) {
