@@ -1,8 +1,10 @@
 'use strict'
 
 const Admin = require('./admin')
-const Photo = require('./photo')
+const About = require('./aboutus')
+const Portofolio = require('./portofolio')
 const Testimoni = require('./testimoni')
 const Pricelist = require('./pricelist')
+const Service = require('./service')
 
-module.exports = { Admin, Photo, Testimoni, Pricelist }
+module.exports = { Admin, About, Portofolio, Testimoni, Pricelist, Service }
