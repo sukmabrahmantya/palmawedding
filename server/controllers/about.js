@@ -2,7 +2,7 @@
 
 const { About } = require('../models')
 
-class photoController {
+class aboutController {
   static addPhoto(req, res, next) {
     const { image } = req.body
     About
@@ -45,4 +45,4 @@ class photoController {
 
 }
 
-module.exports = photoController
+module.exports = aboutController
