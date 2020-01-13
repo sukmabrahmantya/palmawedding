@@ -36,7 +36,7 @@ class portofolioController {
 
   static topPhoto(req, res, next) {
     Portofolio
-      .find().sort('-createdAt').limit(3)
+      .find().sort('-createdAt').limit(12)
       .then(images => {
         res.status(200).json(images)
       })

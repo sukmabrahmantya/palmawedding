@@ -36,7 +36,7 @@ class serviceController {
 
   static topPhoto(req, res, next) {
     Service
-      .find().sort('-createdAt').limit(4)
+      .find().sort('-createdAt').limit(2)
       .then(images => {
         res.status(200).json(images)
       })

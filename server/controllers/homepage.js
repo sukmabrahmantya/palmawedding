@@ -1,11 +1,11 @@
 'use strict'
 
-const { About } = require('../models')
+const { Homepage } = require('../models')
 
-class aboutController {
+class homepageController {
   static addPhoto(req, res, next) {
     const { image } = req.body
-    About
+    Homepage
       .create({ image })
       .then(image => {
         res.status(201).json(image)
@@ -15,7 +15,7 @@ class aboutController {
 
   static deletePhoto(req, res, next) {
     const id = req.params.id
-    About
+    Homepage
       .findByIdAndDelete(id)
       .then(image => {
         res.status(200).json({
@@ -26,7 +26,7 @@ class aboutController {
   }
 
   static findAllPhoto(req, res, next) {
-    About
+    Homepage
       .find()
       .then(images => {
         res.status(200).json(images)
@@ -35,8 +35,8 @@ class aboutController {
   }
 
   static topPhoto(req, res, next) {
-    About
-      .find().sort('-createdAt').limit(4)
+    Homepage
+      .find().sort('-createdAt').limit(3)
       .then(images => {
         res.status(200).json(images)
       })
@@ -45,4 +45,4 @@ class aboutController {
 
 }
 
-module.exports = aboutController
+module.exports = homepageController
