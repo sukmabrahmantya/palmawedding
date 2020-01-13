@@ -1,11 +1,11 @@
 'use strict'
 
-const { Photo } = require('../models')
+const { Portofolio } = require('../models')
 
 class photoController {
   static addPhoto(req, res, next) {
     const { title, image, clientName, date } = req.body
-    Photo
+    Portofolio
       .create({ title, image, clientName, date: new Date(date) })
       .then(image => {
         res.status(201).json(image)
@@ -15,7 +15,7 @@ class photoController {
 
   static deletePhoto(req, res, next) {
     const id = req.params.id
-    Photo
+    Portofolio
       .findByIdAndDelete(id)
       .then(image => {
         res.status(200).json({
@@ -26,7 +26,7 @@ class photoController {
   }
 
   static findAllPhoto(req, res, next) {
-    Photo
+    Portofolio
       .find()
       .then(images => {
         res.status(200).json(images)
@@ -35,7 +35,7 @@ class photoController {
   }
 
   static topPhoto(req, res, next) {
-    Photo
+    Portofolio
       .find().sort('-createdAt').limit(3)
       .then(images => {
         res.status(200).json(images)
