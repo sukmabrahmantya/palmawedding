@@ -1,12 +1,12 @@
 'use strict'
 
-const { Portofolio } = require('../models')
+const { About } = require('../models')
 
-class portofolioController {
+class photoController {
   static addPhoto(req, res, next) {
-    const { title, image, clientName, date } = req.body
-    Portofolio
-      .create({ title, image, clientName, date: new Date(date) })
+    const { image } = req.body
+    About
+      .create({ image })
       .then(image => {
         res.status(201).json(image)
       })
@@ -15,7 +15,7 @@ class portofolioController {
 
   static deletePhoto(req, res, next) {
     const id = req.params.id
-    Portofolio
+    About
       .findByIdAndDelete(id)
       .then(image => {
         res.status(200).json({
@@ -26,7 +26,7 @@ class portofolioController {
   }
 
   static findAllPhoto(req, res, next) {
-    Portofolio
+    About
       .find()
       .then(images => {
         res.status(200).json(images)
@@ -35,7 +35,7 @@ class portofolioController {
   }
 
   static topPhoto(req, res, next) {
-    Portofolio
+    About
       .find().sort('-createdAt').limit(3)
       .then(images => {
         res.status(200).json(images)
@@ -45,4 +45,4 @@ class portofolioController {
 
 }
 
-module.exports = portofolioController
+module.exports = photoController
