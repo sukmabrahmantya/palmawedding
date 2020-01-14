@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <h1>
-      Hoho Abaout
-    </h1>
+    <div class="container-fluid about mt-5 border">
+      <h1>test</h1>
+    </div>
   </div>
 </template>
 
@@ -16,6 +16,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

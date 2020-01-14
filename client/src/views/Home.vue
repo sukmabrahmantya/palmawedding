@@ -66,28 +66,28 @@
         </div>
         <div class="col-12 col-md-8 mt-3 mb-3">
           <div class="row menu">
-            <div class="col mx-auto text-center p-2 concept" :class="{active: service == 'concept'}">
+            <div @click="changePage('concept')" class="col mx-auto text-center p-2 concept" :class="{active: service == 'concept'}">
                 <i class="fab fa-medapps mt-2" :class="{active: service == 'concept'}"></i>
                 <h5 class="mt-3 mb-2">CONCEPT DESIGN</h5>
             </div>
-            <div class="col mx-auto text-center p-2 budget" :class="{active: service == 'budget'}">
+            <div @click="changePage('budget')" class="col mx-auto text-center p-2 budget" :class="{active: service == 'budget'}">
                 <i class="fas fa-dollar-sign mt-2" :class="{active: service == 'budget'}" ></i>
                 <h5 class="mt-3 mb-2">BUDGET PLANNING</h5>
             </div>
-            <div class="col mx-auto text-center p-2 vendor" :class="{active: service == 'vendor'}">
+            <div @click="changePage('vendor')" class="col mx-auto text-center p-2 vendor" :class="{active: service == 'vendor'}" >
                 <i class="far fa-handshake mt-2" :class="{active: service == 'vendor'}"></i>
                 <h5 class="mt-3 mb-2">VENDOR MANAGEMENT</h5>
             </div>
             <div class="w-100"></div>
-            <div class="col mx-auto text-center p-2 design" :class="{active: service == 'design'}">
+            <div @click="changePage('design')" class="col mx-auto text-center p-2 design" :class="{active: service == 'design'}">
                 <i class="far fa-newspaper mt-2" :class="{active: service == 'design'}"></i>
                 <h5 class="mt-3 mb-2">EXPERIENCE DESIGN</h5>
             </div>
-            <div class="col mx-auto text-center p-2 logistic" :class="{active: service == 'logistics'}">
+            <div @click="changePage('logistics')" class="col mx-auto text-center p-2 logistic" :class="{active: service == 'logistics'}">
                 <i class="far fa-list-alt mt-2" :class="{active: service == 'logistic'}"></i>
                 <h5 class="mt-3 mb-2">LOGISTICS MANAGEMENT</h5>
             </div>
-            <div class="col mx-auto text-center p-2 event" :class="{active: service == 'event'}">
+            <div @click="changePage('event')" class="col mx-auto text-center p-2 event" :class="{active: service == 'event'}">
                 <i class="far fa-calendar mt-2" :class="{active: service == 'event'}"></i>
                 <h5 class="mt-3 mb-2">EVENT MANAGEMENT</h5>
             </div>
@@ -111,10 +111,13 @@ export default {
   },
   data () {
     return {
-      service: 'budget'
+      service: 'concept'
     }
   },
   methods: {
+    changePage (name) {
+      this.service = name
+    }
   }
 }
 </script>
