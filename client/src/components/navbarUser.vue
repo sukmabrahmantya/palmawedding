@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" class="navbar-set fixed-top">
       <b-navbar-brand to="/">
-        <img src="../../public/image/palma.jpg" alt="loading..." class="d-inline-block align-top">
+        <img src="@/assets/palma.jpg" alt="loading..." class="d-inline-block align-top">
       </b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>

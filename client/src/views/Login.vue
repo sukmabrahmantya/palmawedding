@@ -2,20 +2,20 @@
   <div class="d-flex page">
     <Navbar />
     <div class="d-flex container justify-content-center align-items-center login mt-5">
-      <div class="d-flex flex-column bd-highlight mb-3 sub-login">
+      <div class="d-flex flex-column bd-highlight mb-3">
         <div class="p-2 bd-highlight mt-3">
           <b-card class="card">
             <b-card-text>
-              <div class="d-flex bd-highlight">
-                <div class="p-2 bd-highlight register">
+              <div class="d-flex flex-column flex-md-row bd-highlight">
+                <div class="p-2 d-flex bd-highlight justify-content-center align-items-center mx-auto">
                   <div class="logo-palma">
-                    <img src="../../public/image/palma.jpg" alt="loading..." class="palma-logo">
+                    <img src="@/assets/palma.jpg" alt="loading..." class="img-fluid">
                   </div>
                 </div>
                 <div class="p-2 w-100 bd-highlight form-login">
                   <div class="ml-4 mr-4 form">
                     <b-form @submit.prevent="login">
-                      <b-form-group id="email" label="Email" class="label">
+                      <b-form-group id="email" label="Email" class="label mt-2">
                         <b-form-input
                           v-model="email"
                           required
@@ -107,42 +107,18 @@ export default {
   align-content: center;
   justify-content: center
 }
-
 .login {
-  /* height: 100vh; */
-  /* margin-top: 120px !important; */
-  width: 70%;
   font-family: 'Ubuntu', sans-serif;
 }
-.back {
-  color: #8ec54a;
-  font-weight: bold;
-  text-decoration: underline;
-}
-.sub-login {
-  width: 100%;
-}
-img {
-  height: 180px;
-}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
-.logo-palma {
-  text-align: center
 }
 
 .palma-logo {
   height: 130px;
 }
 
-.register {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .form-login {
   border-left: 3px solid #8ec54a !important;
 }
@@ -151,12 +127,10 @@ img {
   font-weight: bold;
   color: #6a4625;
 }
-
 .btn {
-  width: 210px;
+  width: 50%;
   font-weight: bold;
 }
-
 .indep,
 .indep:focus {
   background-color: #8ec54a !important;
@@ -167,14 +141,13 @@ img {
   background-color: #6b9a32 !important;
   border: #6b9a32 !important;
 }
-
 .input {
   box-shadow: none !important;
-  height: 40px;
 }
 .input:focus,
 .input:hover {
   box-shadow: none !important;
   border: 2px solid #8ec54a;
 }
+
 </style>
