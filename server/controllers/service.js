@@ -45,6 +45,7 @@ class serviceController {
 
   static addTestimoni(req, res, next) {
     const { name, date, testimony } = req.body
+    console.log(req.body)
     Testimoni
       .create({ name, date: new Date(date), testimony })
       .then(testimoni => {
@@ -84,9 +85,9 @@ class serviceController {
   }
 
   static addPricelist(req, res, next) {
-    const { pricelist } = req.body
+    const { file } = req.body
     Pricelist
-      .create({ pricelist })
+      .create({ pricelist: file })
       .then(pricelist => {
         res.status(201).json(pricelist)
       })

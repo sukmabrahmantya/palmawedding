@@ -3,12 +3,16 @@
 const express = require('express')
 const router = express.Router()
 const About = require('../controllers/about')
-const upload = require('../middlewares/gcsUpload')
+const gcsUpload = require('gcs-upload')
 
-router.post('/upload', upload.single('image'), (req, res) => {
-  res.status(200).json(req.body)
+const upload = gcsUpload({
+  gcsConfig: {
+    keyFilename: 'keyfile.json',
+    bucketName: process.env.GOOGLE_CLOUD_BUCKET
+  }
 })
-router.post('/', About.addPhoto)
+
+router.post('/', upload.single('image'), About.addPhoto)
 router.delete('/:id', About.deletePhoto)
 router.get('/', About.findAllPhoto)
 router.get('/top', About.topPhoto)

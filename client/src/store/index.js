@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     login: false,
     username: '',
-    status: ''
+    status: '',
+    image: ''
   },
   mutations: {
     SET_LOGIN (state, payload) {
@@ -19,9 +20,72 @@ export default new Vuex.Store({
     },
     SET_STATUS (state, payload) {
       state.status = payload
+    },
+    SET_IMAGE (state, payload) {
+      state.image = payload
     }
   },
   actions: {
+    fetchImageHome ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'homepage/top',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          commit('SET_IMAGE', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    fetchImageAbout ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'about/top',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          commit('SET_IMAGE', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    fetchImagePortofolio ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'portofolio/top',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          commit('SET_IMAGE', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    fetchImageService ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'service/top',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          commit('SET_IMAGE', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     login ({ commit }, payload) {
       return axios.post('admin/login', payload)
     },

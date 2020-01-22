@@ -13,10 +13,7 @@
         style="text-shadow: 1px 1px 2px #333;"
       >
 
-        <b-carousel-slide :img-src="require('@/assets/image/homepage1.jpeg')"></b-carousel-slide>
-        <b-carousel-slide :img-src="require('@/assets/image/homepage2.jpeg')"></b-carousel-slide>
-        <b-carousel-slide :img-src="require('@/assets/image/homepage3.jpeg')"></b-carousel-slide>
-        <b-carousel-slide :img-src="require('@/assets/image/homepage4.jpeg')"></b-carousel-slide>
+        <b-carousel-slide v-for="image in fetchImage" :key="image._id" :img-src="image.image"></b-carousel-slide>
       </b-carousel>
     </div>
     <!-- Content -->
@@ -118,6 +115,14 @@ export default {
     changePage (name) {
       this.service = name
     }
+  },
+  computed: {
+    fetchImage () {
+      return this.$store.state.image
+    }
+  },
+  created () {
+    this.$store.dispatch('fetchImageHome')
   }
 }
 </script>
