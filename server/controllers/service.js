@@ -77,7 +77,7 @@ class serviceController {
 
   static topTestimoni(req, res, next) {
     Testimoni
-      .find().sort('-createdAt').limit(6)
+      .find().sort('-createdAt').limit(5)
       .then(testimonies => {
         res.status(200).json(testimonies)
       })

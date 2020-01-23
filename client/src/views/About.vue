@@ -7,9 +7,9 @@
     </div>
     <div class="container-fluid mt-5 pt-5 mx-auto">
       <div class="row ml-3 mr-3">
-        <div class=" p-3 col-12 col-md-3 d-flex justify-content-center align-items-center">
+        <div v-for="image in fetchImage" :key="image._id" class=" p-3 col-12 col-md-3 d-flex justify-content-center align-items-center">
           <div class="card">
-            <img src="@/assets/image/homepage1.jpeg" class="card-img-top" alt="...">
+            <img :src="image.image" class="card-img-top" alt="...">
           </div>
         </div>
       </div>
@@ -42,11 +42,6 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Overpass|Playfair+Display&display=swap');
-
-/* .about {
-  height: 300px;
-  max-height: 100vh;
-} */
 
 h1 {
   font-family: 'Playfair Display', serif;

@@ -9,7 +9,9 @@ export default new Vuex.Store({
     login: false,
     username: '',
     status: '',
-    image: ''
+    image: '',
+    pricelist: '',
+    testimoni: ''
   },
   mutations: {
     SET_LOGIN (state, payload) {
@@ -23,9 +25,45 @@ export default new Vuex.Store({
     },
     SET_IMAGE (state, payload) {
       state.image = payload
+    },
+    SET_PRICELIST (state, payload) {
+      state.pricelist = payload
+    },
+    SET_TESTIMONI (state, payload) {
+      state.testimoni = payload
     }
   },
   actions: {
+    fetchTestimoni ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'service/testimoni/top',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          commit('SET_TESTIMONI', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    fetchPricelist ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'service/pricelist/top',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          commit('SET_PRICELIST', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     fetchImageHome ({ commit }) {
       axios({
         method: 'GET',
