@@ -95,7 +95,6 @@ class serviceController {
   }
 
   static deletePricelist(req, res, next) {
-    console.log('masukkkkkkk')
     const id = req.params.id
     Pricelist
       .findByIdAndDelete(id)
