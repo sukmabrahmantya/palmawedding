@@ -1,20 +1,16 @@
 <template>
-  <div class="home">
+  <div class="about">
     <div class="d-flex flex-row bd-highlight p-2">
-      <div class="bd-highlight">
+      <div class="bd-highlight w-50">
         <h4>Output in client side :</h4>
-        <b-carousel
-          id="carousel-1"
-          class="carousel-homepage"
-          :interval="5000"
-          controls
-          indicators
-          background="#ababab"
-          style="text-shadow: 1px 1px 2px #333;"
-        >
-          <b-carousel-slide v-for="image in fetchImage" :key="image._id" :img-src="image.image"></b-carousel-slide>
-        </b-carousel>
-        <h4 class="mt-3">Add image :</h4>
+        <div class="row ml-3 mr-3">
+          <div v-for="image in fetchImage" :key="image._id" class=" p-3 col-12 col-md-3 d-flex justify-content-center align-items-center">
+            <div class="card">
+              <img :src="image.image" class="card-img-top" alt="...">
+            </div>
+          </div>
+        </div>
+        <h4 class="mt-5">Add image :</h4>
         <form @submit.prevent="addImage" class="form-inline">
           <b-form-file type="file" v-model="image" ref="file" class="w-75 mr-3"/>
           <b-button variant="success" type='submit' class="indep">Submit</b-button>
@@ -35,7 +31,7 @@
               <tr v-for="(image, index) in fetchImageAll" :key="image._id">
                 <th scope="row">{{index + 1}}</th>
                 <td> <img :src="image.image" alt="loading..." style="height:4rem "></td>
-                <td v-if="index < 3"><p><button type="button" class="btn btn-danger btn-sm" disabled>active</button></p></td>
+                <td v-if="index < 4"><p><button type="button" class="btn btn-danger btn-sm" disabled>active</button></p></td>
                 <td v-else></td>
                 <td><a @click.prevent="destroy(image)" ><i class="fas fa-trash"></i></a></td>
               </tr>
@@ -60,7 +56,7 @@ export default {
       const formData = new FormData()
       formData.append('image', this.image)
 
-      this.$store.dispatch('addImageHome', formData)
+      this.$store.dispatch('addImageAbout', formData)
         .then(({ data }) => {
           swal.fire({
             icon: 'success',
@@ -69,8 +65,8 @@ export default {
             timer: 1500
           })
           this.image = null
-          this.$store.dispatch('fetchImageHome')
-          this.$store.dispatch('fetchImageHomeAll')
+          this.$store.dispatch('fetchImageAbout')
+          this.$store.dispatch('fetchImageAboutAll')
         })
         .catch((err) => {
           swal.fire({
@@ -90,7 +86,7 @@ export default {
         confirmButtonText: 'Yes, Delete!'
       }).then(result => {
         if (result.value) {
-          this.$store.dispatch('deleteImageHome', val._id)
+          this.$store.dispatch('deleteImageAbout', val._id)
             .then(({ data }) => {
               swal.fire({
                 title: 'Success!',
@@ -98,8 +94,8 @@ export default {
                 icon: 'success',
                 confirmButtonText: 'Oke'
               })
-              this.$store.dispatch('fetchImageHome')
-              this.$store.dispatch('fetchImageHomeAll')
+              this.$store.dispatch('fetchImageAbout')
+              this.$store.dispatch('fetchImageAboutAll')
             })
             .catch(err => {
               swal.fire({
@@ -121,9 +117,9 @@ export default {
     }
   },
   created () {
-    this.$store.commit('SET_PAGE', 'dashboardHome')
-    this.$store.dispatch('fetchImageHome')
-    this.$store.dispatch('fetchImageHomeAll')
+    this.$store.commit('SET_PAGE', 'dashboardAbout')
+    this.$store.dispatch('fetchImageAbout')
+    this.$store.dispatch('fetchImageAboutAll')
   }
 }
 </script>
@@ -131,28 +127,28 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
 
-.home {
+h4 {
+  font-family: 'Dosis', sans-serif;
+}
+
+.w-50 {
+  width: 60% !important
+}
+
+.w-75 {
+  width: 86% !important;
+}
+
+.about {
   height: 93vh;
   min-height: 93vh;
   overflow: scroll;
 }
 
-h4 {
-  font-family: 'Dosis', sans-serif;
-}
-
 .data {
   width: 41vw !important;
-  overflow: scroll;
   height: 38rem;
-}
-
-#carousel-1 {
-  width: 50vw !important;
-}
-
-.w-75 {
-  width: 86% !important;
+  overflow: scroll;
 }
 
 a {
@@ -166,8 +162,20 @@ a {
   border: #8ec54a !important;
   box-shadow: none !important;
 }
+
 .indep:hover {
   background-color: #6b9a32 !important;
   border: #6b9a32 !important;
+}
+
+img {
+  height: 10rem;
+  object-fit: cover;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+  height: 10rem;
+  border: none
 }
 </style>

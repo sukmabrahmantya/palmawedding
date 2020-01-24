@@ -1,6 +1,9 @@
 'use strict'
 
 const { Homepage } = require('../models')
+const { Storage } = require('@google-cloud/storage')
+const storage = new Storage()
+const file = storage.bucket('image-palma')
 
 class homepageController {
   static addPhoto(req, res, next) {
@@ -27,7 +30,7 @@ class homepageController {
 
   static findAllPhoto(req, res, next) {
     Homepage
-      .find()
+      .find().sort('-createdAt')
       .then(images => {
         res.status(200).json(images)
       })

@@ -27,7 +27,7 @@ class serviceController {
 
   static findAllPhoto(req, res, next) {
     Service
-      .find()
+      .find().sort('-createdAt')
       .then(images => {
         res.status(200).json(images)
       })
@@ -68,7 +68,7 @@ class serviceController {
 
   static findAllTestimoni(req, res, next) {
     Testimoni
-      .find()
+      .find().sort('-createdAt')
       .then(testimonies => {
         res.status(200).json(testimonies)
       })
@@ -95,6 +95,7 @@ class serviceController {
   }
 
   static deletePricelist(req, res, next) {
+    console.log('masukkkkkkk')
     const id = req.params.id
     Pricelist
       .findByIdAndDelete(id)
@@ -108,7 +109,7 @@ class serviceController {
 
   static findAllPricelist(req, res, next) {
     Pricelist
-      .find()
+      .find().sort('-createdAt')
       .then(pricelistes => {
         res.status(200).json(pricelistes)
       })

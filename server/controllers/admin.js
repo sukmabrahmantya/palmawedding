@@ -58,6 +58,27 @@ class adminController {
       })
       .catch( next )
   }
+
+  static delete(req, res, next) {
+    const id = req.params.id
+    Admin
+      .findByIdAndDelete(id)
+      .then(image => {
+        res.status(200).json({
+          message: 'Admin Successfully to delete'
+        })
+      })
+      .catch(next)
+  }
+
+  static fetchAll (req, res, next) {
+    Admin
+      .find({ status: 'Admin' }).sort('-createdAt')
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(next)
+  }
 }
 
 module.exports = adminController

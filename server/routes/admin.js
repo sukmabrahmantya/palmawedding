@@ -8,6 +8,9 @@ const Autho = require('../middlewares/authorization')
 
 router.post('/login', Admin.login)
 router.get('/verify', Admin.verivyToken)
+router.get('/all', Auth, Autho, Admin.fetchAll)
 router.post('/register', Auth, Autho, Admin.register)
+router.delete('/register/:id', Auth, Autho, Admin.delete)
+
 
 module.exports = router

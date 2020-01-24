@@ -27,7 +27,7 @@ class portofolioController {
 
   static findAllPhoto(req, res, next) {
     Portofolio
-      .find()
+      .find().sort('-createdAt')
       .then(images => {
         res.status(200).json(images)
       })

@@ -27,7 +27,7 @@ class aboutController {
 
   static findAllPhoto(req, res, next) {
     About
-      .find()
+      .find().sort('-createdAt')
       .then(images => {
         res.status(200).json(images)
       })

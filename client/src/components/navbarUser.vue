@@ -4,6 +4,9 @@
       <b-navbar-brand to="/">
         <img src="@/assets/palma.jpg" alt="loading..." class="d-inline-block align-top">
       </b-navbar-brand>
+      <b-navbar-brand>
+        Palma Wedding
+      </b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item to="/about">About Us</b-nav-item>

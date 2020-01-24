@@ -33,6 +33,31 @@ const routes = [
         path: '',
         name: 'dashboard-home',
         component: () => import(/* webpackChunkName: "dashboardHome" */ '../components/dashboardHome.vue')
+      },
+      {
+        path: 'about',
+        name: 'dashboard-about',
+        component: () => import(/* webpackChunkName: "dashboardAbout" */ '../components/dashboardAbout.vue')
+      },
+      {
+        path: 'service',
+        name: 'dashboard-service',
+        component: () => import(/* webpackChunkName: "dashboardService" */ '../components/dashboardService.vue')
+      },
+      {
+        path: 'portofolio',
+        name: 'dashboard-portofolio',
+        component: () => import(/* webpackChunkName: "dashboardPortofolio" */ '../components/dashboardPortofolio.vue')
+      },
+      {
+        path: 'event',
+        name: 'dashboard-event',
+        component: () => import(/* webpackChunkName: "dashboardEvent" */ '../components/dashboardEvent.vue')
+      },
+      {
+        path: 'add-admin',
+        name: 'dashboard-add-admin',
+        component: () => import(/* webpackChunkName: "dashboardAddAdmin" */ '../components/dashboardAddAdmin.vue')
       }
     ]
   },

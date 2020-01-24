@@ -4,27 +4,33 @@
       <div
         class="d-flex align-content-between flex-wrap bd-highlight"
         style="justify-content: center">
-        <a class="btn navbar-btn" role="button">
+        <b-button to="/dashboard" :class="{ active: this.page == 'dashboardHome' }" class="btn navbar-btn">
           <i class="fas fa-home" id="icon"></i>
-        </a>
-        <a class="btn navbar-btn" role="button">
+        </b-button>
+        <b-button to="/dashboard/about" :class="{ active: this.page == 'dashboardAbout' }" class="btn navbar-btn">
+          <i class="fas fa-question-circle" id="icon"></i>
+        </b-button>
+        <b-button to="/dashboard/service" :class="{ active: this.page == 'dashboardService' }" class="btn navbar-btn">
           <i class="fas fa-gem" id="icon"></i>
-        </a>
-        <a v-if="(this.status === 'Super Admin')" class="btn navbar-btn" role="button">
-          <i class="far fa-calendar-alt" id="icon"></i>
-        </a>
-        <a class="btn navbar-btn active disabled" role="button">
-          <img src="https://img.icons8.com/color/48/000000/palm-tree.png" id="icon-mini">
-        </a>
-        <a v-if="(this.status === 'Super Admin')" class="btn navbar-btn" role="button">
-          <i class="fas fa-user-plus" id="icon"></i>
-        </a>
-        <a class="btn navbar-btn" role="button">
+        </b-button>
+        <b-button to="/dashboard/portofolio" :class="{ active: this.page == 'dashboardPortofolio' }" class="btn navbar-btn">
           <i class="far fa-images" id="icon"></i>
-        </a>
-        <a class="btn navbar-btn" @click="logout" role="button">
+        </b-button>
+        <b-button v-if="(this.status === 'Super Admin')" :class="{ active: this.page == 'dashboardEvent' }" to="/dashboard/event" disabled class="btn navbar-btn">
+         <i class="fas fa-users" id="icon"></i>
+        </b-button>
+        <b-button v-if="(this.status === 'Super Admin')" :class="{ active: this.page == 'dashboardEvent' }" to="/dashboard/event" disabled class="btn navbar-btn">
+          <i class="far fa-calendar-alt" id="icon"></i>
+        </b-button>
+        <b-button v-if="(this.status === 'Super Admin')" :class="{ active: this.page == 'dashboardEvent' }" to="/dashboard/event" disabled class="btn navbar-btn">
+          <i class="fas fa-dollar-sign" id="icon"></i>
+        </b-button>
+        <b-button v-if="(this.status === 'Super Admin')" :class="{ active: this.page == 'dashboardAddAdmin' }" to="/dashboard/add-admin" class="btn navbar-btn">
+          <i class="fas fa-user-plus" id="icon"></i>
+        </b-button>
+        <b-button @click.prevent="logout" class="btn navbar-btn">
           <i class="fas fa-sign-out-alt" id="icon"></i>
-        </a>
+        </b-button>
       </div>
     </div>
   </div>
@@ -55,6 +61,7 @@ export default {
           this.$store.commit('SET_LOGIN', false)
           this.$store.commit('SET_USERNAME', '')
           this.$store.commit('SET_STATUS', '')
+          this.$store.commit('SET_PAGE', '')
           this.$router.push('/')
         }
       })
@@ -63,6 +70,9 @@ export default {
   computed: {
     status () {
       return this.$store.state.status
+    },
+    page () {
+      return this.$store.state.page
     }
   }
 }
@@ -86,21 +96,27 @@ export default {
   height: 24px !important;
 }
 
+.btn {
+  background-color: #8ec54a !important ;
+  border-color: #8ec54a;
+  color: black
+}
+
 .navbar-btn {
   box-shadow: none !important;
 }
 
-.navbar-btn:hover {
-  background-color: #6b9a32;
+.btn:hover, .btn:focus {
+  background-color: #6b9a32 !important;
   border-color: #6b9a32;
   box-shadow: none !important;
-  color: #6a4625;
+  color: black !important;
 }
 
 .active {
-  background-color: #6b9a32;
-  border-color: #6b9a32;
+  background-color: #6b9a32 !important;
+  border-color: #6b9a32 !important;
   box-shadow: none !important;
-  color: #6a4625;
+  color: black !important;
 }
 </style>

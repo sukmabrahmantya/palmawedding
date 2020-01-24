@@ -23,7 +23,7 @@ router.get('/testimoni', Service.findAllTestimoni)
 router.get('/testimoni/top', Service.topTestimoni)
 
 router.post('/pricelist', upload.single('file'),  Service.addPricelist)
-router.delete('/pricelist:id', Service.deletePricelist)
+router.delete('/pricelist/:id', Service.deletePricelist)
 router.get('/pricelist', Service.findAllPricelist)
 router.get('/pricelist/top', Service.topPricelist)
 
